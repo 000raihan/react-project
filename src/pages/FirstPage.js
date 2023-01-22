@@ -26,18 +26,23 @@ class FirstPage extends React.Component {
         return (
             <div className='container-fluid'>
                 <div className='row'>
-                    <video
-                        ref="vidRef"
-                        src={this.state.v_file}
-                        type="video/mp4"
-                    />
+                    <div style={{width: '100%'}}>
+                        <video
+                            ref="vidRef"
+                            src={this.state.v_file}
+                            type="video/mp4"
+                            width='100%'
+                            height={500}
+                        />
+                    </div>
+
 
                     <div>
-                        <button onClick={this.playVideo1}>
-                            Play 1
+                        <button className='btn btn-primary' onClick={this.playVideo1}>
+                            Others
                         </button>
-                        <button onClick={this.playVideo2}>
-                            Play 2
+                        <button className='btn btn-primary' style={{marginLeft: 10}} onClick={this.playVideo2}>
+                            Exium Mups
                         </button>
                     </div>
                 </div>
