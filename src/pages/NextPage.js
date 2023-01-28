@@ -1,4 +1,4 @@
-
+import React, {useRef} from "react";
 import { useReactMediaRecorder } from "react-media-recorder";
 import VideoRecorder from "react-video-recorder";
 import {
@@ -14,15 +14,26 @@ const OPTIONS = {
 };
 
 const NextPage =() =>{
-
+    const video_ref = useRef();
+    
   return (
     <div style={{padding:"1rem", backgroundColor:"#007ACC", height:"100%", overflow:"hidden"}}>
     <h1 style={{color:"white"}}>Record a video</h1>
       <VideoRecorder
+        ref={video_ref}
         onRecordingComplete={(videoBlob) => {
           // Do something with the video...
-          console.log("videoBlob", videoBlob);
+          return( <video
+            ref="vidRef"
+            src={videoBlob}
+            type="video/mp4"
+            width='100%'
+            height={500}
+        />)
+        //   console.log("videoBlob", videoBlob);
         }}
+
+
       />
     </div>
   );
