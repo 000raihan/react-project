@@ -2,7 +2,13 @@
   "name": "exium_mups_video",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://127.0.0.1:8001",
   "dependencies": {
+    "@emotion/react": "^11.10.5",
+    "@emotion/styled": "^11.10.5",
+    "@mui/icons-material": "^5.11.0",
+    "@mui/lab": "^5.0.0-alpha.117",
+    "@mui/material": "^5.11.6",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
@@ -10,6 +16,7 @@
     "react": "^18.2.0",
     "react-bootstrap": "^2.7.0",
     "react-dom": "^18.2.0",
+    "react-loading": "^2.0.3",
     "react-media-recorder": "^1.6.6",
     "react-record-webcam": "^0.0.18",
     "react-router-dom": "^6.7.0",
@@ -17,6 +24,7 @@
     "react-video-recorder": "^3.19.4",
     "recordrtc": "^5.6.2",
     "styled-components": "^5.3.6",
+    "sweetalert": "^2.1.2",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -44,4 +52,3 @@
     ]
   }
 }
-

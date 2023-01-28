@@ -1,11 +1,12 @@
-import React, {useRef} from "react";
+import React, {useRef, useState} from "react";
 import { useReactMediaRecorder } from "react-media-recorder";
 import VideoRecorder from "react-video-recorder";
-import {
-  RecordWebcam,
-  useRecordWebcam,
-  CAMERA_STATUS
-} from "react-record-webcam";
+import {CallApi} from "../api/Api";
+import swal from "sweetalert";
+import ReactLoading from 'react-loading';
+import SaveIcon from "@mui/icons-material/Save";
+import LoadingButton from "@mui/lab/LoadingButton";
+
 const OPTIONS = {
   filename: "test-filename",
   fileType: "mp4",
@@ -14,28 +15,71 @@ const OPTIONS = {
 };
 
 const NextPage =() =>{
+    const [loading, setLoading] = useState(false);
+
     const video_ref = useRef();
-    
+    const [videoBlobDetails, setVideoBlobDetails] = useState(null)
+
+  const upload_video = () => {
+      setLoading(true);
+    const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+    CallApi.uploadVideo(videoBlobDetails,currentUser[0].WorkArea).then((result) => {
+          if(result.success){
+            // console.log("Fetch List",result.result);
+              setLoading(false);
+              window.location.replace("/home");
+              localStorage.setItem('upload', "success");
+          }else{
+              setLoading(false);
+            swal({
+              title: result.message,
+              icon: "warning",
+              button: "Close!",
+            });
+            console.log("error", result.error);
+          }
+        },(error) => {
+            setLoading(false);
+          alert("Invalid data.");
+        }
+    );
+
+  }
+
   return (
-    <div style={{padding:"1rem", backgroundColor:"#007ACC", height:"100%", overflow:"hidden"}}>
-    <h1 style={{color:"white"}}>Record a video</h1>
-      <VideoRecorder
-        ref={video_ref}
-        onRecordingComplete={(videoBlob) => {
-          // Do something with the video...
-          return( <video
-            ref="vidRef"
-            src={videoBlob}
-            type="video/mp4"
-            width='100%'
-            height={500}
-        />)
-        //   console.log("videoBlob", videoBlob);
-        }}
+      <div className='container-fluid'>
+        <div className='row'>
+          <div className='col-12 d-flex flex-column justify-content-center align-items-center' style={{height: '100vh'}}>
+            <h1 style={{color:"#3b3b3b"}}>Record a video</h1>
+            <VideoRecorder
+                ref={video_ref}
+                onRecordingComplete={(videoBlob) => {
+                  setVideoBlobDetails(videoBlob)
+                  return( <video
+                      ref="vidRef"
+                      src={videoBlob}
+                      type="video/mp4"
+                      width='100%'
+                      height={500}
+                  />)
+                }}
+            />
 
-
-      />
-    </div>
+              <LoadingButton
+                  size="large"
+                  color="secondary"
+                  onClick={()=>upload_video()}
+                  loading={loading}
+                  loadingPosition="start"
+                  variant="contained"
+                  startIcon={<SaveIcon />}
+                  style={{marginTop: 10, marginBottom: 10}}
+              >
+                  <span>Upload Video</span>
+              </LoadingButton>
+          </div>
+        </div>
+      </div>
   );
 }
 
