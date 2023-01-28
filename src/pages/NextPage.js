@@ -1,127 +1,31 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
+
 import { useReactMediaRecorder } from "react-media-recorder";
 import VideoRecorder from "react-video-recorder";
 import {
-    RecordWebcam,
-    useRecordWebcam,
-    CAMERA_STATUS
+  RecordWebcam,
+  useRecordWebcam,
+  CAMERA_STATUS
 } from "react-record-webcam";
-
 const OPTIONS = {
-    filename: "test-filename",
-    fileType: "mp4",
-    width: 1920,
-    height: 1080
+  filename: "test-filename",
+  fileType: "mp4",
+  width: 1920,
+  height: 1080
 };
-const RecordView = () => {
-    const {
-        status,
-        startRecording,
-        stopRecording,
-        mediaBlobUrl
-    } = useReactMediaRecorder({
-        video: true,
-        facingMode: { exact: "environment" }
-    });
 
-    return (
-        <div>
-            <p>{status}</p>
-            <button onClick={startRecording}>Start Recording</button>
-            <button onClick={stopRecording}>Stop Recording</button>
-            <video src={mediaBlobUrl} controls autoPlay loop />
-        </div>
-    );
-};
-const NextPage = () => {
-    const recordWebcam = useRecordWebcam(OPTIONS);
-    const getRecordingFileHooks = async () => {
-        const blob = await recordWebcam.getRecording();
-        console.log({ blob });
-    };
-
-    const getRecordingFileRenderProp = async (blob) => {
-        console.log({ blob });
-    };
+const NextPage =() =>{
 
   return (
-    <>
-        <div className='container-fluid'>
-            <div className='row'>
-                <div>
-                    <h1>Record your video</h1>
-                    <VideoRecorder
-                        onRecordingComplete={(videoBlob) => {
-                            // Do something with the video...
-                            console.log("videoBlob", videoBlob);
-                        }}
-                    />
-                    <h1>3.react-record-webcam</h1>
-                    <p>Camera status: {recordWebcam.status}</p>
-                    <div>
-                        <button
-                            disabled={
-                                recordWebcam.status === CAMERA_STATUS.OPEN ||
-                                recordWebcam.status === CAMERA_STATUS.RECORDING ||
-                                recordWebcam.status === CAMERA_STATUS.PREVIEW
-                            }
-                            onClick={recordWebcam.open}
-                        >
-                            Open camera
-                        </button>
-                        <button
-                            disabled={
-                                recordWebcam.status === CAMERA_STATUS.CLOSED ||
-                                recordWebcam.status === CAMERA_STATUS.PREVIEW
-                            }
-                            onClick={recordWebcam.close}
-                        >
-                            Close camera
-                        </button>
-                        <button
-                            disabled={
-                                recordWebcam.status === CAMERA_STATUS.CLOSED ||
-                                recordWebcam.status === CAMERA_STATUS.RECORDING ||
-                                recordWebcam.status === CAMERA_STATUS.PREVIEW
-                            }
-                            onClick={recordWebcam.start}
-                        >
-                            Start recording
-                        </button>
-                        <button
-                            disabled={recordWebcam.status !== CAMERA_STATUS.RECORDING}
-                            onClick={recordWebcam.stop}
-                        >
-                            Stop recording
-                        </button>
-                        <button
-                            disabled={recordWebcam.status !== CAMERA_STATUS.PREVIEW}
-                            onClick={recordWebcam.retake}
-                        >
-                            Retake
-                        </button>
-                        <button
-                            disabled={recordWebcam.status !== CAMERA_STATUS.PREVIEW}
-                            onClick={recordWebcam.download}
-                        >
-                            Download
-                        </button>
-                        <button
-                            disabled={recordWebcam.status !== CAMERA_STATUS.PREVIEW}
-                            onClick={getRecordingFileHooks}
-                        >
-                            Get recording
-                        </button>
-                    </div>
-
-
-
-                </div>
-            </div>
-        </div>
-    </>
-  )
+    <div style={{padding:"1rem", backgroundColor:"#007ACC", height:"100%", overflow:"hidden"}}>
+    <h1 style={{color:"white"}}>Record a video</h1>
+      <VideoRecorder
+        onRecordingComplete={(videoBlob) => {
+          // Do something with the video...
+          console.log("videoBlob", videoBlob);
+        }}
+      />
+    </div>
+  );
 }
 
-export default NextPage
+export default NextPage;
