@@ -1,7 +1,7 @@
 import React, {useRef} from 'react'
 import { NavLink } from 'react-router-dom'
 
-import video_1 from '../assets/video_1.mp4';
+import video_1 from '../assets/video_3.mp4';
 import video_2 from '../assets/video_2.mp4';
 
 class FirstPage extends React.Component {
@@ -38,10 +38,10 @@ class FirstPage extends React.Component {
 
 
                     <div>
-                        <button className='btn btn-primary' onClick={this.playVideo1}>
-                            Others
-                        </button>
-                        <button className='btn btn-primary' style={{marginLeft: 10}} onClick={this.playVideo2}>
+                        {/*<button className='btn btn-primary' onClick={this.playVideo1}>*/}
+                        {/*    Others*/}
+                        {/*</button>*/}
+                        <button className='btn btn-primary' style={{marginLeft: 10}} onClick={this.playVideo1}>
                             Exium Mups
                         </button>
                     </div>

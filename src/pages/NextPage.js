@@ -49,7 +49,7 @@ const NextPage =() =>{
   return (
       <div className='container-fluid'>
         <div className='row'>
-          <div className='col-12 d-flex flex-column justify-content-center align-items-center' style={{height: '100vh'}}>
+          <div className='col-12 d-flex flex-column justify-content-center align-items-center' style={{height: '90vh'}}>
             <h1 style={{color:"#3b3b3b"}}>Record a video</h1>
             <VideoRecorder
                 ref={video_ref}
