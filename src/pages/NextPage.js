@@ -19,6 +19,7 @@ const NextPage =() =>{
 
     const video_ref = useRef();
     const [videoBlobDetails, setVideoBlobDetails] = useState(null)
+    const [rDuration, setRDuration] = useState(0)
 
   const upload_video = () => {
       setLoading(true);
@@ -31,12 +32,12 @@ const NextPage =() =>{
               localStorage.setItem('upload', "success");
           }else{
               setLoading(false);
-            swal({
-              title: result.message,
-              icon: "warning",
-              button: "Close!",
-            });
-            console.log("error", result.error);
+                swal({
+                  title: result.message,
+                  icon: "warning",
+                  button: "Close!",
+                });
+                console.log("error", result.error);
           }
         },(error) => {
             setLoading(false);
@@ -48,22 +49,53 @@ const NextPage =() =>{
 
   return (
       <div className='container-fluid'>
+          <div>
+              =
+              {rDuration}
+          </div>
         <div className='row'>
           <div className='col-12 d-flex flex-column justify-content-center align-items-center' style={{height: '90vh'}}>
             <h1 style={{color:"#3b3b3b"}}>MCC Detailing Competition</h1>
             {/*<h2 style={{color:"#3b3b3b"}}>Record Your Detailing</h2>*/}
             <VideoRecorder
+                // ref={video_ref}
+                // timeLimit={1000}
+                // onRecordingComplete={(videoBlob) => {
+                //     setRDuration(videoBlob.duration);
+                //     setVideoBlobDetails(videoBlob);
+                //   return( <video
+                //       ref="vidRef"
+                //       src={videoBlob}
+                //       type="video/mp4"
+                //       width='100%'
+                //       height={500}
+                //   />)
+                // }}
                 ref={video_ref}
-                timeLimit={1000}
+                timeLimit={5000}
+                constraints={{
+                    audio: true,
+                    video: true,
+                }}
+                isFlipped
+                isOnInitially
+                replayVideoAutoplayAndLoopOff
+                onTurnOffCamera={function noRefCheck() {}}
+                onTurnOnCamera={function noRefCheck() {}}
+                showReplayControls
+                renderUnsupportedView={() =>
+                    '<div>Oops, your browser is not currently supported.  Please use Chrome to record your videos.</div>'
+                }
                 onRecordingComplete={(videoBlob) => {
-                  setVideoBlobDetails(videoBlob)
-                  return( <video
-                      ref="vidRef"
-                      src={videoBlob}
-                      type="video/mp4"
-                      width='100%'
-                      height={500}
-                  />)
+                    setRDuration(videoBlob.duration);
+                    setVideoBlobDetails(videoBlob);
+                    return( <video
+                        ref="vidRef"
+                        src={videoBlob}
+                        type="video/mp4"
+                        width='100%'
+                        height={500}
+                    />)
                 }}
             />
 
