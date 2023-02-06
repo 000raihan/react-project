@@ -50,7 +50,8 @@ const NextPage =() =>{
       <div className='container-fluid'>
         <div className='row'>
           <div className='col-12 d-flex flex-column justify-content-center align-items-center' style={{height: '90vh'}}>
-            <h1 style={{color:"#3b3b3b"}}>Record a video</h1>
+            <h1 style={{color:"#3b3b3b"}}>MCC Detailing Competition</h1>
+            <h2 style={{color:"#3b3b3b"}}>Record Your Detailing</h2>
             <VideoRecorder
                 ref={video_ref}
                 onRecordingComplete={(videoBlob) => {
@@ -75,7 +76,7 @@ const NextPage =() =>{
                   startIcon={<SaveIcon />}
                   style={{marginTop: 10, marginBottom: 10}}
               >
-                  <span>Upload Video</span>
+                  <span>Submit Your Video</span>
               </LoadingButton>
           </div>
         </div>

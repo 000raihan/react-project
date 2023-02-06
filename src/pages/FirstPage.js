@@ -41,6 +41,13 @@ class FirstPage extends React.Component {
                         {/*<button className='btn btn-primary' onClick={this.playVideo1}>*/}
                         {/*    Others*/}
                         {/*</button>*/}
+                        <button
+                            type="button"
+                            className="btn btn-primary"
+                            onClick={()=> window.location.href = '/home'}
+                        >
+                            Back
+                        </button>
                         <button className='btn btn-primary' style={{marginLeft: 10}} onClick={this.playVideo1}>
                             Exium Mups
                         </button>

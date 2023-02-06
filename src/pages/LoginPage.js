@@ -47,7 +47,7 @@ const LoginPage = (props) => {
                 <div className='col-12 d-flex flex-column justify-content-center align-items-center' style={{height: '100vh'}}>
 
                     <input
-                        placeholder='SEP ID'
+                        placeholder='SAP ID'
                         style={{fontSize:"1.2rem", border:"1px solid #CACDD1",padding:".5rem 1rem", borderRadius:"5px"}}
                         onChange={(e)=> setSapID(e.target.value)}
                     />
