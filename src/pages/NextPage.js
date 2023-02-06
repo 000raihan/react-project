@@ -54,8 +54,7 @@ const NextPage =() =>{
             {/*<h2 style={{color:"#3b3b3b"}}>Record Your Detailing</h2>*/}
             <VideoRecorder
                 ref={video_ref}
-                countdownTime={60000}
-                timeLimit={60000}
+                timeLimit={1000}
                 onRecordingComplete={(videoBlob) => {
                   setVideoBlobDetails(videoBlob)
                   return( <video
