@@ -30,7 +30,7 @@ const Home = (props) => {
         <div className='container-fluid'>
           <div className='row'>
               <div style={{fontSize: 20, marginTop: 10}}>MCC Detailing Competition</div>
-            <div className='col-12 d-flex flex-column justify-content-center align-items-center' style={{height: '100vh'}}>
+            <div className='col-12 d-flex flex-column justify-content-center align-items-center' style={{height: '80vh'}}>
               <button
                   type="button"
                   className="btn btn-primary"
