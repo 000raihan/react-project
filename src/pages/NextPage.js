@@ -49,55 +49,47 @@ const NextPage =() =>{
 
   return (
       <div className='container-fluid'>
-          <div>
-              =
-              {rDuration}
-          </div>
         <div className='row'>
           <div className='col-12 d-flex flex-column justify-content-center align-items-center' style={{height: '90vh'}}>
             <h1 style={{color:"#3b3b3b"}}>MCC Detailing Competition</h1>
             {/*<h2 style={{color:"#3b3b3b"}}>Record Your Detailing</h2>*/}
-            <VideoRecorder
-                // ref={video_ref}
-                // timeLimit={1000}
-                // onRecordingComplete={(videoBlob) => {
-                //     setRDuration(videoBlob.duration);
-                //     setVideoBlobDetails(videoBlob);
-                //   return( <video
-                //       ref="vidRef"
-                //       src={videoBlob}
-                //       type="video/mp4"
-                //       width='100%'
-                //       height={500}
-                //   />)
-                // }}
-                ref={video_ref}
-                timeLimit={5000}
-                constraints={{
-                    audio: true,
-                    video: true,
-                }}
-                isFlipped
-                isOnInitially
-                replayVideoAutoplayAndLoopOff
-                onTurnOffCamera={function noRefCheck() {}}
-                onTurnOnCamera={function noRefCheck() {}}
-                showReplayControls
-                renderUnsupportedView={() =>
-                    '<div>Oops, your browser is not currently supported.  Please use Chrome to record your videos.</div>'
-                }
-                onRecordingComplete={(videoBlob) => {
-                    setRDuration(videoBlob.duration);
-                    setVideoBlobDetails(videoBlob);
-                    return( <video
-                        ref="vidRef"
-                        src={videoBlob}
-                        type="video/mp4"
-                        width='100%'
-                        height={500}
-                    />)
-                }}
-            />
+              <VideoRecorder
+                  timeLimit={60000}
+                  countdownTime={3000}
+                  dataAvailableTimeout={500}
+                  constraints={{
+                      audio: true,
+                      video: true,
+                  }}
+                  isFlipped
+                  isOnInitially
+                  replayVideoAutoplayAndLoopOff
+                  onTurnOffCamera={function noRefCheck() {}}
+                  onTurnOnCamera={function noRefCheck() {}}
+                  showReplayControls
+                  renderUnsupportedView={() =>
+                      '<div>Oops, your browser is not currently supported.  Please use Chrome to record your videos.</div>'
+                  }
+                  onRecordingComplete={() => {}}
+                  // renderActions={(actions) => {
+                  //   console.log(actions);
+                  // }}
+              />
+            {/*<VideoRecorder*/}
+            {/*    ref={video_ref}*/}
+            {/*    timeLimit={1000}*/}
+            {/*    onRecordingComplete={(videoBlob) => {*/}
+            {/*        setRDuration(videoBlob.duration);*/}
+            {/*        setVideoBlobDetails(videoBlob);*/}
+            {/*      return( <video*/}
+            {/*          ref="vidRef"*/}
+            {/*          src={videoBlob}*/}
+            {/*          type="video/mp4"*/}
+            {/*          width='100%'*/}
+            {/*          height={500}*/}
+            {/*      />)*/}
+            {/*    }}*/}
+            {/*/>*/}
 
               <LoadingButton
                   size="large"
