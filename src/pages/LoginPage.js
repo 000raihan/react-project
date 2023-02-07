@@ -1,37 +1,32 @@
-import React, {useRef, useState} from "react";
-import { useReactMediaRecorder } from "react-media-recorder";
-import VideoRecorder from "react-video-recorder";
-import {CallApi} from "../api/Api";
+import React, {useState} from 'react';
+import { useNavigate  } from "react-router-dom";
 import swal from "sweetalert";
-import ReactLoading from 'react-loading';
-import SaveIcon from "@mui/icons-material/Save";
-import LoadingButton from "@mui/lab/LoadingButton";
+import {CallApi} from "../api/Api";
 
-const OPTIONS = {
-    filename: "test-filename",
-    fileType: "mp4",
-    width: 1920,
-    height: 1080
-};
+const LoginPage = (props) => {
+    const navigate = useNavigate();
+    const [sapID, setSapID] = useState(null);
 
-const LoginPage =() =>{
-    const [loading, setLoading] = useState(false);
+    const onSubmit = async ()=>{
+        if(sapID === null){
+            swal({
+                title: "Please enter your sap id",
+                icon: "warning",
+                button: "Close!",
+            });
+        }else{
+            await getList();
+        }
+    };
 
-    const video_ref = useRef();
-    const [videoBlobDetails, setVideoBlobDetails] = useState(null)
-    const [rDuration, setRDuration] = useState(0)
 
-    const upload_video = () => {
-        setLoading(true);
-        const currentUser = JSON.parse(localStorage.getItem("currentUser"));
-        CallApi.uploadVideo(videoBlobDetails,currentUser[0].WorkArea).then((result) => {
+    const getList = async () => {
+        CallApi.fetchUserInfo(sapID).then((result) => {
                 if(result.success){
                     // console.log("Fetch List",result.result);
-                    setLoading(false);
-                    window.location.replace("/home");
-                    localStorage.setItem('upload', "success");
+                    localStorage.setItem('currentUser', JSON.stringify(result.result));
+                    navigate("home")
                 }else{
-                    setLoading(false);
                     swal({
                         title: result.message,
                         icon: "warning",
@@ -40,73 +35,37 @@ const LoginPage =() =>{
                     console.log("error", result.error);
                 }
             },(error) => {
-                setLoading(false);
                 alert("Invalid data.");
             }
         );
+    };
 
-    }
-
-    return (
+  return (
+    <>
         <div className='container-fluid'>
             <div className='row'>
-                <div className='col-12 d-flex flex-column justify-content-center align-items-center' style={{height: '90vh'}}>
-                    <h1 style={{color:"#3b3b3b"}}>MCC Detailing Competition</h1>
-                    {/*<h2 style={{color:"#3b3b3b"}}>Record Your Detailing</h2>*/}
-                    <VideoRecorder
-                        timeLimit={60000}
-                        countdownTime={3000}
-                        dataAvailableTimeout={500}
-                        constraints={{
-                            audio: true,
-                            video: true,
-                        }}
-                        isFlipped
-                        isOnInitially
-                        replayVideoAutoplayAndLoopOff
-                        onTurnOffCamera={function noRefCheck() {}}
-                        onTurnOnCamera={function noRefCheck() {}}
-                        showReplayControls
-                        renderUnsupportedView={() =>
-                            '<div>Oops, your browser is not currently supported.  Please use Chrome to record your videos.</div>'
-                        }
-                        onRecordingComplete={() => {}}
-                        // renderActions={(actions) => {
-                        //   console.log(actions);
-                        // }}
-                    />
-                    {/*<VideoRecorder*/}
-                    {/*    ref={video_ref}*/}
-                    {/*    timeLimit={1000}*/}
-                    {/*    onRecordingComplete={(videoBlob) => {*/}
-                    {/*        setRDuration(videoBlob.duration);*/}
-                    {/*        setVideoBlobDetails(videoBlob);*/}
-                    {/*      return( <video*/}
-                    {/*          ref="vidRef"*/}
-                    {/*          src={videoBlob}*/}
-                    {/*          type="video/mp4"*/}
-                    {/*          width='100%'*/}
-                    {/*          height={500}*/}
-                    {/*      />)*/}
-                    {/*    }}*/}
-                    {/*/>*/}
+                <div className='col-12 d-flex flex-column justify-content-center align-items-center' style={{height: '100vh'}}>
 
-                    <LoadingButton
-                        size="large"
-                        color="secondary"
-                        onClick={()=>upload_video()}
-                        loading={loading}
-                        loadingPosition="start"
-                        variant="contained"
-                        startIcon={<SaveIcon />}
-                        style={{marginTop: 10, marginBottom: 10}}
+                    <input
+                        placeholder='SAP ID'
+                        style={{fontSize:"1.2rem", border:"1px solid #CACDD1",padding:".5rem 1rem", borderRadius:"5px"}}
+                        onChange={(e)=> setSapID(e.target.value)}
+                    />
+
+                    <button
+                        type="button"
+                        className="btn btn-primary"
+                        style={{marginTop: 20,width: 100}}
+                        onClick={()=> onSubmit()}
                     >
-                        <span>Submit Your Video</span>
-                    </LoadingButton>
+                        Login
+                    </button>
+
                 </div>
             </div>
         </div>
-    );
-}
+    </>
+  )
+};
 
-export default LoginPage;
+export default LoginPage
