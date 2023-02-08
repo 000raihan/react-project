@@ -1,8 +1,10 @@
 import React, {useRef} from 'react'
 import { NavLink } from 'react-router-dom'
 
-import video_1 from '../assets/video_3.mp4';
-import video_2 from '../assets/video_2.mp4';
+import video_1 from '../assets/video_4.mp4';
+import video_2 from '../assets/video_4.mp4';
+import logo from "../assets/exiumps_logo.png";
+import play_icon from "../assets/play_icon.png";
 
 class FirstPage extends React.Component {
     state = {v_file: video_1};
@@ -37,7 +39,7 @@ class FirstPage extends React.Component {
                     </div>
 
 
-                    <div>
+                    <div className='d-flex justify-content-center'>
                         {/*<button className='btn btn-primary' onClick={this.playVideo1}>*/}
                         {/*    Others*/}
                         {/*</button>*/}
@@ -48,10 +50,23 @@ class FirstPage extends React.Component {
                         >
                             Back
                         </button>
-                        <button className='btn btn-primary' style={{marginLeft: 10}} onClick={this.playVideo1}>
-                            Exium Mups
-                        </button>
+                        <div>
+                            <img
+                                src={play_icon} width={50} height={50}
+                                onClick={this.playVideo1}
+                                style={{marginLeft: 20}}
+                            />
+                        </div>
+                        {/*<button className='btn btn-primary' style={{marginLeft: 10}} onClick={this.playVideo1}>*/}
+                        {/*    Exium Mups*/}
+                        {/*</button>*/}
                     </div>
+                </div>
+                <div className='row'>
+                    <div>
+                        <img src={logo} />
+                    </div>
+
                 </div>
             </div>
         );

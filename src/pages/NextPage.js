@@ -53,43 +53,21 @@ const NextPage =() =>{
           <div className='col-12 d-flex flex-column justify-content-center align-items-center' style={{height: '90vh'}}>
             <h1 style={{color:"#3b3b3b"}}>MCC Detailing Competition</h1>
             {/*<h2 style={{color:"#3b3b3b"}}>Record Your Detailing</h2>*/}
-              <VideoRecorder
-                  timeLimit={60000}
-                  countdownTime={3000}
-                  dataAvailableTimeout={500}
-                  constraints={{
-                      audio: true,
-                      video: true,
-                  }}
-                  isFlipped
-                  isOnInitially
-                  replayVideoAutoplayAndLoopOff
-                  onTurnOffCamera={function noRefCheck() {}}
-                  onTurnOnCamera={function noRefCheck() {}}
-                  showReplayControls
-                  renderUnsupportedView={() =>
-                      '<div>Oops, your browser is not currently supported.  Please use Chrome to record your videos.</div>'
-                  }
-                  onRecordingComplete={() => {}}
-                  // renderActions={(actions) => {
-                  //   console.log(actions);
-                  // }}
-              />
-            {/*<VideoRecorder*/}
-            {/*    ref={video_ref}*/}
-            {/*    timeLimit={1000}*/}
-            {/*    onRecordingComplete={(videoBlob) => {*/}
-            {/*        setRDuration(videoBlob.duration);*/}
-            {/*        setVideoBlobDetails(videoBlob);*/}
-            {/*      return( <video*/}
-            {/*          ref="vidRef"*/}
-            {/*          src={videoBlob}*/}
-            {/*          type="video/mp4"*/}
-            {/*          width='100%'*/}
-            {/*          height={500}*/}
-            {/*      />)*/}
-            {/*    }}*/}
-            {/*/>*/}
+            <VideoRecorder
+                ref={video_ref}
+                timeLimit={1000}
+                onRecordingComplete={(videoBlob) => {
+                    setRDuration(videoBlob.duration);
+                    setVideoBlobDetails(videoBlob);
+                  return( <video
+                      ref="vidRef"
+                      src={videoBlob}
+                      type="video/mp4"
+                      width='100%'
+                      height={500}
+                  />)
+                }}
+            />
 
               <LoadingButton
                   size="large"
@@ -101,7 +79,7 @@ const NextPage =() =>{
                   startIcon={<SaveIcon />}
                   style={{marginTop: 10, marginBottom: 10}}
               >
-                  <span>Submit Your Video</span>
+                  <span>Submit Your Details Video</span>
               </LoadingButton>
           </div>
         </div>

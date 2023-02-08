@@ -29,7 +29,7 @@ const Home = (props) => {
   return (
         <div className='container-fluid'>
           <div className='row'>
-              <div style={{fontSize: 20, marginTop: 10}}>MCC Detailing Competition</div>
+              <div style={{fontSize: 20, marginTop: 10,color: '#F46919'}}>MCC Detailing</div>
             <div className='col-12 d-flex flex-column justify-content-center align-items-center' style={{height: '70vh'}}>
               <button
                   type="button"
@@ -37,7 +37,7 @@ const Home = (props) => {
                   style={{marginTop: 20,width: 300, height: 50}}
                   onClick={()=> navigate("/first-page")}
               >
-                For Doctor
+                  D-Sales Aid
               </button>
 
               <button
