@@ -79,7 +79,7 @@ const NextPage =() =>{
                   startIcon={<SaveIcon />}
                   style={{marginTop: 10, marginBottom: 10}}
               >
-                  <span>Submit Your Details Video</span>
+                  <span style={{color: '#F46919'}}>Submit Your Detailing Video</span>
               </LoadingButton>
           </div>
         </div>
