@@ -20,7 +20,7 @@ function App() {
     <div className="App">
       {/* <h1>This is NextPage</h1> */}
       <Routes>
-        <Route path="/" element={<LoginPage />}/>
+        <Route path="/" element={<FirstPage />}/>
         <Route path="/home" element={<Home />}/>
         <Route path="/first-page" element={<FirstPage />}/>
         <Route path="/next-page" element={<NextPage />}/>
