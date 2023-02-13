@@ -24,7 +24,7 @@ const NextPage =() =>{
   const upload_video = () => {
       setLoading(true);
     const currentUser = JSON.parse(localStorage.getItem("currentUser"));
-    CallApi.uploadVideo(videoBlobDetails,currentUser[0].WorkArea).then((result) => {
+    CallApi.uploadVideo(videoBlobDetails,currentUser[0].SAPMIOCode).then((result) => {
           if(result.success){
             // console.log("Fetch List",result.result);
               setLoading(false);
