@@ -23,7 +23,7 @@ function App() {
         <Route path="/" element={<LoginPage />}/>
         <Route path="/home" element={<Home />}/>
         <Route path="/first-page" element={<FirstPage />}/>
-        <Route path="/next-page" element={<NextPage />}/>
+        <Route path="/ardiance" element={<NextPage />}/>
         {/* <Route path="/login" element={<LoginPage />}/> */}
 
       </Routes>

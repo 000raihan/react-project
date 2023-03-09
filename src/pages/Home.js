@@ -44,7 +44,7 @@ const Home = (props) => {
                   type="button"
                   className="btn btn-primary"
                   style={{marginTop: 40,width: 300, height: 50}}
-                  onClick={()=> navigate("/next-page")}
+                  onClick={()=> navigate("/ardiance")}
               >
                 For MIO
               </button>

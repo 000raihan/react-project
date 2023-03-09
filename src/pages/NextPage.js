@@ -41,7 +41,7 @@ const NextPage =() =>{
           }
         },(error) => {
             setLoading(false);
-          alert(error.toString());
+          alert("Invalid data.");
         }
     );
 
