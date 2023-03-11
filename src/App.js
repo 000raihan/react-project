@@ -20,11 +20,16 @@ function App() {
     <div className="App">
       {/* <h1>This is NextPage</h1> */}
       <Routes>
-        <Route path="/" element={<LoginPage />}/>
-        <Route path="/home" element={<Home />}/>
-        <Route path="/first-page" element={<FirstPage />}/>
-        <Route path="/ardiance" element={<NextPage />}/>
+        {/*<Route path="/" element={<LoginPage />}/>*/}
+        {/*<Route path="/home" element={<Home />}/>*/}
+        {/*<Route path="/first-page" element={<FirstPage />}/>*/}
+        {/*<Route path="/ardiance" element={<NextPage />}/>*/}
         {/* <Route path="/login" element={<LoginPage />}/> */}
+
+          <Route path="/ardiance" element={<LoginPage />}/>
+          {/*<Route path="/home" element={<Home />}/>*/}
+          {/*<Route path="/first-page" element={<FirstPage />}/>*/}
+          <Route path="/video-record" element={<NextPage />}/>
 
       </Routes>
     </div>

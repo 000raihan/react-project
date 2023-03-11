@@ -25,7 +25,7 @@ const LoginPage = (props) => {
                 if(result.success){
                     // console.log("Fetch List",result.result);
                     localStorage.setItem('currentUser', JSON.stringify(result.result));
-                    navigate("home")
+                    navigate("/video-record")
                 }else{
                     swal({
                         title: result.message,

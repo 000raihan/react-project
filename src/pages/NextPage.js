@@ -28,7 +28,7 @@ const NextPage =() =>{
           if(result.success){
             // console.log("Fetch List",result.result);
               setLoading(false);
-              window.location.replace("/home");
+              window.location.replace("/video-record");
               localStorage.setItem('upload', "success");
           }else{
               setLoading(false);
