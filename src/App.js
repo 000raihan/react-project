@@ -6,6 +6,7 @@ import NextPage from "./pages/NextPage";
 import LoginPage from "./pages/LoginPage";
 import Home from "./pages/Home";
 import {useEffect} from "react";
+import Success from "./pages/Success";
 
 function App() {
 
@@ -27,6 +28,7 @@ function App() {
         {/* <Route path="/login" element={<LoginPage />}/> */}
 
           <Route path="/ardiance" element={<LoginPage />}/>
+          <Route path="/success" element={<Success />}/>
           {/*<Route path="/home" element={<Home />}/>*/}
           {/*<Route path="/first-page" element={<FirstPage />}/>*/}
           <Route path="/video-record" element={<NextPage />}/>
