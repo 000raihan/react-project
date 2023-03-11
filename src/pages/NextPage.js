@@ -57,7 +57,6 @@ const NextPage =() =>{
                 ref={video_ref}
                 timeLimit={60000}
                 countdownTime={3000}
-                dataAvailableTimeout={500}
                 onRecordingComplete={(videoBlob) => {
                     setRDuration(videoBlob.duration);
                     setVideoBlobDetails(videoBlob);
