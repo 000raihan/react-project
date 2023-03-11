@@ -24,26 +24,36 @@ const NextPage =() =>{
   const upload_video = () => {
       setLoading(true);
     const currentUser = JSON.parse(localStorage.getItem("currentUser"));
-    CallApi.uploadVideo(videoBlobDetails,currentUser[0].SAPMIOCode).then((result) => {
-          if(result.success){
-            // console.log("Fetch List",result.result);
-              setLoading(false);
-              window.location.replace("/success");
-              localStorage.setItem('upload', "success");
-          }else{
-              setLoading(false);
-                swal({
-                  title: result.message,
-                  icon: "warning",
-                  button: "Close!",
-                });
-                console.log("error", result.error);
-          }
-        },(error) => {
-            setLoading(false);
-          alert("Invalid data.");
-        }
-    );
+
+    if(videoBlobDetails !== null){
+        CallApi.uploadVideo(videoBlobDetails,currentUser[0].SAPMIOCode).then((result) => {
+                if(result.success){
+                    // console.log("Fetch List",result.result);
+                    setLoading(false);
+                    window.location.replace("/success");
+                    localStorage.setItem('upload', "success");
+                }else{
+                    setLoading(false);
+                    swal({
+                        title: result.message,
+                        icon: "warning",
+                        button: "Close!",
+                    });
+                    console.log("error", result.error);
+                }
+            },(error) => {
+                setLoading(false);
+                alert("Invalid data.");
+            }
+        );
+    }else{
+        setLoading(false);
+        swal({
+            title: "Record your video !",
+            icon: "warning",
+            button: "Close!",
+        });
+    }
 
   }
 
