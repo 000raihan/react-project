@@ -29,7 +29,7 @@ const Home = (props) => {
   return (
         <div className='container-fluid'>
           <div className='row'>
-              <div style={{fontSize: 20, marginTop: 10,color: '#F46919'}}>Ardiance Detailing</div>
+              <div style={{fontSize: 20, marginTop: 10,color: '#F46919'}}>Ardance Detailing</div>
             <div className='col-12 d-flex flex-column justify-content-center align-items-center' style={{height: '70vh'}}>
               <button
                   type="button"
