@@ -65,7 +65,7 @@ const NextPage =() =>{
             {/*<h2 style={{color:"#3b3b3b"}}>Record Your Detailing</h2>*/}
             <VideoRecorder
                 ref={video_ref}
-                timeLimit={60000}
+                timeLimit={300000}
                 countdownTime={3000}
                 onRecordingComplete={(videoBlob) => {
                     setRDuration(videoBlob.duration);
