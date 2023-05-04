@@ -6,6 +6,7 @@ import swal from "sweetalert";
 import ReactLoading from 'react-loading';
 import SaveIcon from "@mui/icons-material/Save";
 import LoadingButton from "@mui/lab/LoadingButton";
+import logo from "../assets/exiumps_logo.png";
 
 const OPTIONS = {
   filename: "test-filename",
@@ -61,7 +62,8 @@ const NextPage =() =>{
       <div className='container-fluid'>
         <div className='row'>
           <div className='col-12 d-flex flex-column justify-content-center align-items-center' style={{height: '90vh'}}>
-            <h1 style={{color:"#3b3b3b"}}>Ardance Detailing Competition</h1>
+              <img src={logo} width={140} />
+              <h1 style={{color:"#3b3b3b"}}>Exium MUPS Digital Amnesia SA</h1>
             {/*<h2 style={{color:"#3b3b3b"}}>Record Your Detailing</h2>*/}
             <VideoRecorder
                 ref={video_ref}

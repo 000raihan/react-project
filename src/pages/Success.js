@@ -9,7 +9,8 @@ const Success = (props) => {
     return (
         <div className='container-fluid'>
             <div className='row'>
-                <div style={{fontSize: 20, marginTop: 10,color: '#F46919'}}>Ardance Detailing</div>
+                <img src={logo} width={140} />
+                <h1 style={{color:"#3b3b3b"}}>Exium MUPS Digital Amnesia SA</h1>
                 <div className='col-12 d-flex flex-column justify-content-center align-items-center' style={{height: '70vh'}}>
 
                     <div style={{fontSize: 18}}>Upload Successfully</div>

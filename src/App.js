@@ -27,7 +27,7 @@ function App() {
         {/*<Route path="/ardiance" element={<NextPage />}/>*/}
         {/* <Route path="/login" element={<LoginPage />}/> */}
 
-          <Route path="/ardiance" element={<LoginPage />}/>
+          <Route path="/exium_mups" element={<LoginPage />}/>
           <Route path="/success" element={<Success />}/>
           {/*<Route path="/home" element={<Home />}/>*/}
           {/*<Route path="/first-page" element={<FirstPage />}/>*/}
