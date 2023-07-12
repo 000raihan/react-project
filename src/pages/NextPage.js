@@ -63,7 +63,7 @@ const NextPage =() =>{
         <div className='row'>
           <div className='col-12 d-flex flex-column justify-content-center align-items-center' style={{height: '90vh'}}>
               <img src={logo} width={140} />
-              <h1 style={{color:"#3b3b3b"}}>Digital Amnesia SA</h1>
+              <h1 style={{color:"#3b3b3b"}}>C-19 SA</h1>
             {/*<h2 style={{color:"#3b3b3b"}}>Record Your Detailing</h2>*/}
             <VideoRecorder
                 ref={video_ref}
