@@ -62,13 +62,13 @@ const NextPage =() =>{
       <div className='container-fluid'>
         <div className='row'>
           <div className='col-12 d-flex flex-column justify-content-center align-items-center' style={{height: '90vh'}}>
-              <img src={logo} width={140} />
-              <h1 style={{color:"#3b3b3b"}}>C-19 SA</h1>
+              {/* <img src={logo} width={140} /> */}
+              <h1 style={{color:"#3b3b3b", padding:".5rem 0rem"}}>Quality Sales Aid Detailing</h1>
             {/*<h2 style={{color:"#3b3b3b"}}>Record Your Detailing</h2>*/}
             <VideoRecorder
                 ref={video_ref}
-                timeLimit={300000}
                 countdownTime={3000}
+                timeLimit={5000}
                 onRecordingComplete={(videoBlob) => {
                     setRDuration(videoBlob.duration);
                     setVideoBlobDetails(videoBlob);

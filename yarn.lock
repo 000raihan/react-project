@@ -1319,11 +1319,6 @@
     "minimatch" "^3.1.2"
     "strip-json-comments" "^3.1.1"
 
-"@ffprobe-installer/darwin-x64@5.0.0":
-  "integrity" "sha512-Zl0UkZ+wW/eyMKBPLTUCcNQch2VDnZz/cBn1DXv3YtCBVbYd9aYzGj4MImdxgWcoE0+GpbfbO6mKGwMq5HCm6A=="
-  "resolved" "https://registry.npmjs.org/@ffprobe-installer/darwin-x64/-/darwin-x64-5.0.0.tgz"
-  "version" "5.0.0"
-
 "@ffprobe-installer/ffprobe@^1.4.1":
   "integrity" "sha512-3WJvxU0f4d7IOZdzoVCAj9fYtiQNC6E0521FJFe9iP5Ej8auTXU7TsrUzIAG1CydeQI+BnM3vGog92SCcF9KtA=="
   "resolved" "https://registry.npmjs.org/@ffprobe-installer/ffprobe/-/ffprobe-1.4.1.tgz"
@@ -1337,6 +1332,11 @@
     "@ffprobe-installer/linux-x64" "5.0.0"
     "@ffprobe-installer/win32-ia32" "5.0.0"
     "@ffprobe-installer/win32-x64" "5.0.0"
+
+"@ffprobe-installer/win32-x64@5.0.0":
+  "integrity" "sha512-P4ZMRFxVMnfMsOyTfBM/+nkTodLeOUfXNPo+X1bKEWBiZxRErqX/IHS5sLA0yAH8XmtKZcL7Cu6M26ztGcQYxw=="
+  "resolved" "https://registry.npmjs.org/@ffprobe-installer/win32-x64/-/win32-x64-5.0.0.tgz"
+  "version" "5.0.0"
 
 "@humanwhocodes/config-array@^0.11.8":
   "integrity" "sha512-UybHIJzJnR5Qc/MsD9Kr+RpO2h+/P1GhOwdiLPXK5TWk5sgTdu88bTD9UP+CKbPPh5Rni1u0GjAdYQLemG8g+g=="
@@ -5132,11 +5132,6 @@
   "integrity" "sha512-OO0pH2lK6a0hZnAdau5ItzHPI6pUlvI7jMVnxUQRtw4owF2wk8lOSabtGDCTP4Ggrg2MbGnWO9X8K1t4+fGMDw=="
   "resolved" "https://registry.npmjs.org/fs.realpath/-/fs.realpath-1.0.0.tgz"
   "version" "1.0.0"
-
-"fsevents@^2.3.2", "fsevents@~2.3.2":
-  "integrity" "sha512-xiqMQR4xAeHTuB9uWm+fFRcIOgKBMiOBP+eXiyT7jsgVCq1bkVygt00oASowB7EdtpOHaaPgKt812P9ab+DDKA=="
-  "resolved" "https://registry.npmjs.org/fsevents/-/fsevents-2.3.2.tgz"
-  "version" "2.3.2"
 
 "function-bind@^1.1.1":
   "integrity" "sha512-yIovAzMX49sF8Yl58fSCWJ5svSLuaibPxXQJFLmBObTuCr0Mf1KiPopGM9NiFjiYBCbfaa2Fh6breQ6ANVTI0A=="
