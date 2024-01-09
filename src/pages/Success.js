@@ -10,7 +10,7 @@ const Success = (props) => {
     <div className="container-fluid">
       <div className="row">
         <img src={logo} width={140} />
-        <h1 style={{ color: "#3b3b3b" }}>C-19 SA</h1>
+        {/* <h1 style={{ color: "#3b3b3b" }}>C-19 SA</h1> */}
         <div
           className="col-12 d-flex flex-column justify-content-center align-items-center"
           style={{ height: "70vh" }}
