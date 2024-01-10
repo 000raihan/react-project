@@ -65,20 +65,21 @@ const NextPage = () => {
           className="col-12 d-flex flex-column justify-content-center align-items-center"
           style={{ height: "90vh" }}
         >
-          {/* <img src={logo} width={140} /> */}
-          <h1 style={{ color: "#3b3b3b", padding: ".5rem 0rem" }}>
+          <img src={logo} width={200} />
+          <h1 style={{ color: "#3b3b3b", padding: ".5rem 0rem", fontSize:"1.4rem",fontWeight:"700"}}>
             Quality Sales Aid Detailing
           </h1>
           {/*<h2 style={{color:"#3b3b3b"}}>Record Your Detailing</h2>*/}
           <VideoRecorder
-            ref={video_ref}
+            ref={video_ref}s
             countdownTime={3000}
             timeLimit={60000}
             constraints={{
               audio: true,
               video: true,
+              facingMode: "environment",
             }}
-            isFlipped ={false}
+            // isFlipped={false}
             onRecordingComplete={(videoBlob) => {
               setRDuration(videoBlob.duration);
               setVideoBlobDetails(videoBlob);
@@ -101,10 +102,10 @@ const NextPage = () => {
             loading={loading}
             loadingPosition="start"
             variant="contained"
-            startIcon={<SaveIcon />}
-            style={{ marginTop: 10, marginBottom: 10 }}
+            // startIcon={<SaveIcon />}
+            style={{ marginTop: 10, marginBottom: 10, backgroundColor:"blue" }}
           >
-            <span style={{ color: "#F46919" }}>
+            <span style={{ color: "white" }}>
               Submit Your Detailing Video
             </span>
           </LoadingButton>
