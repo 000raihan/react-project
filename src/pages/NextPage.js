@@ -7,7 +7,7 @@ import SaveIcon from "@mui/icons-material/Save";
 import LoadingButton from "@mui/lab/LoadingButton";
 import logo from "../assets/exiumps_logo.png";
 
-import './style.css'
+import "./style.css";
 
 const OPTIONS = {
   filename: "test-filename",
@@ -68,12 +68,21 @@ const NextPage = () => {
           style={{ height: "90vh" }}
         >
           <img src={logo} width={200} />
-          <h1 style={{ color: "#3b3b3b", padding: ".5rem 0rem", fontSize:"1.4rem",fontWeight:"700"}}>
+          <h1
+            style={{
+              color: "#3b3b3b",
+              padding: ".5rem 0rem",
+              fontSize: "1.4rem",
+              fontWeight: "700",
+            }}
+          >
+            
             Quality Sales Aid Detailing
           </h1>
           {/*<h2 style={{color:"#3b3b3b"}}>Record Your Detailing</h2>*/}
           <VideoRecorder
-            ref={video_ref}s
+            ref={video_ref}
+            s
             countdownTime={3000}
             timeLimit={60000}
             constraints={{
@@ -105,11 +114,9 @@ const NextPage = () => {
             loadingPosition="start"
             variant="contained"
             // startIcon={<SaveIcon />}
-            style={{ marginTop: 10, marginBottom: 10, backgroundColor:"blue" }}
+            style={{ marginTop: 10, marginBottom: 10, backgroundColor: "blue" }}
           >
-            <span style={{ color: "white" }}>
-              Submit Your Detailing Video
-            </span>
+            <span style={{ color: "white" }}>Submit Your Detailing Video</span>
           </LoadingButton>
         </div>
       </div>
