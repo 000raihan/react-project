@@ -76,13 +76,13 @@ const NextPage = () => {
               fontWeight: "700",
             }}
           >
-            
+
             Quality Sales Aid Detailing
           </h1>
           {/*<h2 style={{color:"#3b3b3b"}}>Record Your Detailing</h2>*/}
           <VideoRecorder
             ref={video_ref}
-            s
+            showReplayControls
             countdownTime={3000}
             timeLimit={60000}
             constraints={{
