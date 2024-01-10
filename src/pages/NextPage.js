@@ -7,6 +7,8 @@ import SaveIcon from "@mui/icons-material/Save";
 import LoadingButton from "@mui/lab/LoadingButton";
 import logo from "../assets/exiumps_logo.png";
 
+import './style.css'
+
 const OPTIONS = {
   filename: "test-filename",
   fileType: "mp4",
