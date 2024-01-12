@@ -26,7 +26,7 @@ function fetchUserInfo(sap_id) {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(data),
   };
-  return fetch(`/api/login`, requestOptions)
+  return fetch("/api/login", requestOptions)
     .then((response) => response.json())
     .then((result) => {
       return result;
