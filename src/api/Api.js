@@ -1,4 +1,4 @@
-const baseUrl = `http://localhost:6050`;
+// const baseUrl = `http://localhost:6050`;
 // const baseUrl = `http://128.199.87.251:6050`;
 
 function uploadVideo(videoBlob, sap_id) {
@@ -10,7 +10,7 @@ function uploadVideo(videoBlob, sap_id) {
     method: "POST",
     body: formData,
   };
-  return fetch(`${baseUrl}/api/upload_video`, requestOptions)
+  return fetch(`/api/upload_video`, requestOptions)
     .then((response) => response.json())
     .then((result) => {
       return result;
@@ -26,7 +26,7 @@ function fetchUserInfo(sap_id) {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(data),
   };
-  return fetch(`${baseUrl}/api/login`, requestOptions)
+  return fetch(`/api/login`, requestOptions)
     .then((response) => response.json())
     .then((result) => {
       console.log("Result is : ", result);

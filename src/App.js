@@ -7,6 +7,7 @@ import LoginPage from "./pages/LoginPage";
 import Home from "./pages/Home";
 import { useEffect } from "react";
 import Success from "./pages/Success";
+import Records from "./pages/Records";
 
 function App() {
   // useEffect( ()=>{
@@ -29,6 +30,7 @@ function App() {
         <Route path="/" element={<LoginPage />} />
         <Route path="/success" element={<Success />} />
         <Route path="/video-record" element={<NextPage />} />
+        <Route path="/records" element={<Records />} />
       </Routes>
     </div>
   );
