@@ -29,12 +29,8 @@ function fetchUserInfo(sap_id) {
   return fetch(`/api/login`, requestOptions)
     .then((response) => response.json())
     .then((result) => {
-      console.log("Result is : ", result);
       return result;
     })
-    .catch((err) => {
-      console.log("Error is : ", err);
-    });
 }
 
 export const CallApi = {
