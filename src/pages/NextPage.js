@@ -6,7 +6,7 @@ import ReactLoading from "react-loading";
 import SaveIcon from "@mui/icons-material/Save";
 import LoadingButton from "@mui/lab/LoadingButton";
 import logo from "../assets/exiumps_logo.png";
-import { Button, Modal } from "antd";
+import { Button, Modal, Spin } from "antd";
 
 import "./style.css";
 
@@ -24,9 +24,11 @@ const NextPage = () => {
   const [videoBlobDetails, setVideoBlobDetails] = useState(null);
   const [rDuration, setRDuration] = useState(0);
   const [openModal, setOpenModal] = useState(false);
+  const [spining,setSpining] = useState(false)
 
   const upload_video = () => {
     setLoading(true);
+    setSpining(true)
     const currentUser = JSON.parse(localStorage.getItem("currentUser"));
 
     if (videoBlobDetails !== null) {
@@ -36,7 +38,8 @@ const NextPage = () => {
             // console.log("Fetch List",result.result);
             setLoading(false);
             // window.location.replace("/success");
-            setOpenModal(true)
+            setSpining(false)
+            setOpenModal(true);
             localStorage.setItem("upload", "success");
           } else {
             setLoading(false);
@@ -50,7 +53,7 @@ const NextPage = () => {
         },
         (error) => {
           setLoading(false);
-          alert( error);
+          alert(error);
         }
       );
     } else {
@@ -131,8 +134,17 @@ const NextPage = () => {
         </div>
       </div>
 
-      <Modal open={openModal} onCancel={() => cancelModal} onOk={()=>okModal()}>
+      <Modal
+        closable={false}
+        footer={null}
+        open={openModal}
+        onCancel={() => cancelModal}
+        onOk={() => okModal()}
+      >
         <h3>Thank you for submitting</h3>
+      </Modal>
+      <Modal closable={false} footer={null} open={spining}>
+        <div><Spin size="large"/></div>
       </Modal>
     </div>
   );
