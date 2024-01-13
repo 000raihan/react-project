@@ -24,11 +24,11 @@ const NextPage = () => {
   const [videoBlobDetails, setVideoBlobDetails] = useState(null);
   const [rDuration, setRDuration] = useState(0);
   const [openModal, setOpenModal] = useState(false);
-  const [spining,setSpining] = useState(false)
+  const [spining, setSpining] = useState(false);
 
   const upload_video = () => {
     setLoading(true);
-    setSpining(true)
+    setSpining(true);
     const currentUser = JSON.parse(localStorage.getItem("currentUser"));
 
     if (videoBlobDetails !== null) {
@@ -38,7 +38,7 @@ const NextPage = () => {
             // console.log("Fetch List",result.result);
             setLoading(false);
             // window.location.replace("/success");
-            setSpining(false)
+            setSpining(false);
             setOpenModal(true);
             localStorage.setItem("upload", "success");
           } else {
@@ -135,7 +135,8 @@ const NextPage = () => {
       </div>
 
       <Modal
-        closable={false}
+        centered
+        closeIcon={null}
         footer={null}
         open={openModal}
         onCancel={() => cancelModal}
@@ -143,8 +144,10 @@ const NextPage = () => {
       >
         <h3>Thank you for submitting</h3>
       </Modal>
-      <Modal closable={false} footer={null} open={spining}>
-        <div><Spin size="large"/></div>
+      <Modal centered closable={false} footer={null} open={spining}>
+        <div>
+          <Spin size="large" />
+        </div>
       </Modal>
     </div>
   );
