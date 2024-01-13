@@ -6,6 +6,7 @@ import ReactLoading from "react-loading";
 import SaveIcon from "@mui/icons-material/Save";
 import LoadingButton from "@mui/lab/LoadingButton";
 import logo from "../assets/exiumps_logo.png";
+import { Button, Modal } from "antd";
 
 import "./style.css";
 
@@ -22,6 +23,7 @@ const NextPage = () => {
   const video_ref = useRef();
   const [videoBlobDetails, setVideoBlobDetails] = useState(null);
   const [rDuration, setRDuration] = useState(0);
+  const [openModal, setOpenModal] = useState(false);
 
   const upload_video = () => {
     setLoading(true);
@@ -33,7 +35,7 @@ const NextPage = () => {
           if (result.success) {
             // console.log("Fetch List",result.result);
             setLoading(false);
-            window.location.replace("/success");
+            // window.location.replace("/success");
             localStorage.setItem("upload", "success");
           } else {
             setLoading(false);
@@ -47,7 +49,7 @@ const NextPage = () => {
         },
         (error) => {
           setLoading(false);
-          alert("Invalid data.");
+          alert( error);
         }
       );
     } else {
@@ -58,6 +60,14 @@ const NextPage = () => {
         button: "Close!",
       });
     }
+  };
+
+  const okModal = () => {
+    window.location.replace("/");
+  };
+
+  const cancelModal = () => {
+    window.location.replace("/");
   };
 
   return (
@@ -76,7 +86,6 @@ const NextPage = () => {
               fontWeight: "700",
             }}
           >
-
             Quality Sales Aid Detailing
           </h1>
           {/*<h2 style={{color:"#3b3b3b"}}>Record Your Detailing</h2>*/}
@@ -120,6 +129,10 @@ const NextPage = () => {
           </LoadingButton>
         </div>
       </div>
+
+      <Modal open={openModal} onCancel={() => cancelModal} onOk={()=>okModal()}>
+        <h3>Thank you for submitting</h3>
+      </Modal>
     </div>
   );
 };
