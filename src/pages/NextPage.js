@@ -139,13 +139,13 @@ const NextPage = () => {
         closeIcon={null}
         footer={null}
         open={openModal}
-        onCancel={() => cancelModal}
+        onCancel={() => cancelModal()}
         onOk={() => okModal()}
       >
-        <h3>Thank you for submitting</h3>
+        <h3 style={{ textAlign: "center" }}>Thank you for submitting</h3>
       </Modal>
       <Modal centered closable={false} footer={null} open={spining}>
-        <div>
+        <div style={{ width: "100%", textAlign: "center" }}>
           <Spin size="large" />
         </div>
       </Modal>
