@@ -36,6 +36,7 @@ const NextPage = () => {
             // console.log("Fetch List",result.result);
             setLoading(false);
             // window.location.replace("/success");
+            setOpenModal(true)
             localStorage.setItem("upload", "success");
           } else {
             setLoading(false);
