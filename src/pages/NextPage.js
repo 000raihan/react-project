@@ -27,11 +27,12 @@ const NextPage = () => {
   const [spining, setSpining] = useState(false);
 
   const upload_video = () => {
-    setLoading(true);
-    setSpining(true);
+
     const currentUser = JSON.parse(localStorage.getItem("currentUser"));
 
     if (videoBlobDetails !== null) {
+      setLoading(true);
+      setSpining(true);
       CallApi.uploadVideo(videoBlobDetails, currentUser[0].SAPMIOCode).then(
         (result) => {
           if (result.success) {
