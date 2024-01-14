@@ -1,40 +1,94 @@
-import React from "react";
-import { Space, Table, Tag, Card } from "antd";
+import React, { useEffect, useState } from "react";
+import { Space, Table, Tag, Card, Spin } from "antd";
 import ReactPlayer from "react-player";
+import axios from "axios";
 
-const columns = [
-  {
-    title: "Id",
-    dataIndex: "key",
-    key: "key",
-    width: '15%',
-    render: (text) => <a>{text}</a>,
-  },
-  {
-    title: "Name",
-    dataIndex: "name",
-    key: "name",
-    width: '50%',
-    render: (text) => <a>{text}</a>,
-  },
+function getYoutubeVideoID(url) {
+  const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
+  const match = url.match(regExp);
 
-  //   {
-  //     title: "Action",
-  //     key: "action",
-  //     render: (_, record) => (
-  //       <Space size="middle">
-  //         <a>Invite {record.name}</a>
-  //         <a>Delete</a>
-  //       </Space>
-  //     ),
-  //   },
-  {
-    title: "Video",
-    key: "action",
-    // width: '30%',
-    render: (video, record) => (
-      <div size="middle">
-        <iframe
+  return match && match[2].length === 11 ? match[2] : null;
+}
+
+const videoUrl = (url) => {
+  return `https://www.youtube.com/embed/${getYoutubeVideoID(
+    url || "https://www.youtube.com/watch?v=qquIJ1Ivusg"
+  )}/0.jpg?mode=opaque&amp;rel=0&amp;autohide=1&amp;showinfo=0&amp;wmode=transparent`;
+};
+
+const videoBaseUrl = `http://116.68.200.97:6050/upload/`;
+
+const Records = () => {
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    // Function to fetch data
+    const fetchData = async () => {
+      setLoading(true);
+      try {
+        // Make a GET request using Axios
+        const { data } = await axios.get(
+          "http://116.68.200.97:6050/api/all_video"
+        );
+        // Update state with the fetched data
+        // console.log("Response is : ", data);
+        setData(data?.results);
+        setLoading(false);
+      } catch (error) {
+        // Handle errors here
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    // Call the fetch data function
+    fetchData();
+  }, []);
+
+  const columns = [
+    {
+      title: "User Code",
+      dataIndex: "UserCode",
+      key: "UserCode",
+      width: "15%",
+      render: (text) => <a>{text}</a>,
+    },
+    {
+      title: "Name",
+      dataIndex: "UserName",
+      key: "UserName",
+      render: (text) => <a>{text}</a>,
+    },
+    {
+      title: "Work Area",
+      dataIndex: "WorkArea",
+      key: "WorkArea",
+      render: (text) => <a>{text}</a>,
+    },
+    {
+      title: "Mobile Number",
+      dataIndex: "MobileNumber",
+      key: "MobileNumber",
+      render: (text) => <a>{text}</a>,
+    },
+
+    //   {
+    //     title: "Action",
+    //     key: "action",
+    //     render: (_, record) => (
+    //       <Space size="middle">
+    //         <a>Invite {record.name}</a>
+    //         <a>Delete</a>
+    //       </Space>
+    //     ),
+    //   },
+    {
+      title: "Video",
+      key: "file",
+      // width: '30%',
+      render: (video, record) => (
+        <div size="middle">
+          {/* <iframe
           width="500"
           height="250"
           // src={`${item?.value}`}
@@ -44,60 +98,35 @@ const columns = [
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowfullscreen="allowfullscreen"
           class="aspect-video h-full w-full rounded-lg shadow-lg"
-        ></iframe>
-      </div>
-    ),
-  },
-];
+        ></iframe> */}
+          <div style={{ width: "300px" }}>
+            <ReactPlayer
+              // url="https://www.youtube.com/watch?v=nLQ-9vfEjUI"
+              url={`${videoBaseUrl}/${record?.file}`}
+              width="100%"
+              height="100%"
+              controls={true}
+              playsinline={false}
+              // playing={true}
+              // onEnded={handleVideoEnd}
+            />
+          </div>
+        </div>
+      ),
+    },
+  ];
 
-function getYoutubeVideoID(url) {
-    const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/
-    const match = url.match(regExp)
-
-    return match && match[2].length === 11 ? match[2] : null
-  }
-
-const videoUrl = (url) => {
-  return `https://www.youtube.com/embed/${getYoutubeVideoID(
-    url || "https://www.youtube.com/watch?v=qquIJ1Ivusg"
-  )}/0.jpg?mode=opaque&amp;rel=0&amp;autohide=1&amp;showinfo=0&amp;wmode=transparent`;
-};
-
-const data = [
-  {
-    key: "1",
-    name: "John Brown",
-    age: 32,
-    address: "New York No. 1 Lake Park",
-    tags: ["nice", "developer"],
-    video: "https://www.youtube.com/watch?v=nAnHcdOLQ_8",
-  },
-  {
-    key: "2",
-    name: "Jim Green",
-    age: 42,
-    address: "London No. 1 Lake Park",
-    tags: ["loser"],
-    video: "https://www.youtube.com/watch?v=nAnHcdOLQ_8",
-  },
-  {
-    key: "3",
-    name: "Joe Black",
-    age: 32,
-    address: "Sydney No. 1 Lake Park",
-    tags: ["cool", "teacher"],
-    video: "https://www.youtube.com/watch?v=nAnHcdOLQ_8",
-  },
-];
-
-const Records = () => {
   return (
     <div style={{ padding: "0rem 1rem" }}>
       <Card style={{ marginTop: "1rem" }}>
         <h3 style={{ textAlign: "left", fontWeight: "700", color: "#1F845A" }}>
           Records :{" "}
         </h3>
-        <Table columns={columns} dataSource={data} />
+        {loading ? (
+          <Spin size="large" />
+        ) : (
+          <Table columns={columns} dataSource={data} />
+        )}
       </Card>
     </div>
   );

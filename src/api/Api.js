@@ -30,7 +30,7 @@ function fetchUserInfo(sap_id) {
     .then((response) => response.json())
     .then((result) => {
       return result;
-    })
+    });
 }
 
 export const CallApi = {
