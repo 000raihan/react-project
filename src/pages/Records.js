@@ -28,9 +28,7 @@ const Records = () => {
       setLoading(true);
       try {
         // Make a GET request using Axios
-        const { data } = await axios.get(
-          "/api/all_video"
-        );
+        const { data } = await axios.get("/api/all_video");
         // Update state with the fetched data
         // console.log("Response is : ", data);
         setData(data?.results);
@@ -47,28 +45,33 @@ const Records = () => {
 
   const columns = [
     {
-      title: "User Code",
-      dataIndex: "UserCode",
-      key: "UserCode",
-      width: "15%",
-      render: (text) => <a>{text}</a>,
-    },
-    {
-      title: "Name",
-      dataIndex: "UserName",
-      key: "UserName",
+      title: "SAP MIO Code",
+      dataIndex: "SAPMIOCode",
+      key: "SAPMIOCode",
       render: (text) => <a>{text}</a>,
     },
     {
       title: "Work Area",
-      dataIndex: "WorkArea",
-      key: "WorkArea",
+      dataIndex: "SAPAreaCode",
+      key: "SAPAreaCode",
+      render: (text) => <a>{text}</a>,
+    },
+    {
+      title: "Name",
+      dataIndex: "MIOName",
+      key: "MIOName",
       render: (text) => <a>{text}</a>,
     },
     {
       title: "Mobile Number",
-      dataIndex: "MobileNumber",
-      key: "MobileNumber",
+      dataIndex: "Phone",
+      key: "Phone",
+      render: (text) => <a>{text}</a>,
+    },
+    {
+      title: "Address",
+      dataIndex: "MIOAddress",
+      key: "MIOAddress",
       render: (text) => <a>{text}</a>,
     },
 
@@ -115,6 +118,8 @@ const Records = () => {
       ),
     },
   ];
+
+  console.log("DAta is : ", data);
 
   return (
     <div style={{ padding: "0rem 1rem" }}>
