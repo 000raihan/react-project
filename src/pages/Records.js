@@ -16,7 +16,7 @@ const videoUrl = (url) => {
   )}/0.jpg?mode=opaque&amp;rel=0&amp;autohide=1&amp;showinfo=0&amp;wmode=transparent`;
 };
 
-const videoBaseUrl = `http://116.68.200.97:6050/upload/`;
+const videoBaseUrl = `/upload`;
 
 const Records = () => {
   const [data, setData] = useState([]);
@@ -29,7 +29,7 @@ const Records = () => {
       try {
         // Make a GET request using Axios
         const { data } = await axios.get(
-          "http://116.68.200.97:6050/api/all_video"
+          "/api/all_video"
         );
         // Update state with the fetched data
         // console.log("Response is : ", data);
