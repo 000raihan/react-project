@@ -16,7 +16,7 @@ const videoUrl = (url) => {
   )}/0.jpg?mode=opaque&amp;rel=0&amp;autohide=1&amp;showinfo=0&amp;wmode=transparent`;
 };
 
-const videoBaseUrl = `/upload`;
+const videoBaseUrl = `http://116.68.200.97:6050/upload/`;
 
 const Records = () => {
   const [data, setData] = useState([]);
