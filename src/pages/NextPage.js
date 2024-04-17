@@ -91,7 +91,8 @@ const NextPage = () => {
               fontWeight: "700",
             }}
           >
-           Quality Sales Aid E-detailing
+           Additional Benefit SA E-detailing
+           {/* Quality Sales Aid E-detailing */}
           </h1>
           {/*<h2 style={{color:"#3b3b3b"}}>Record Your Detailing</h2>*/}
           <VideoRecorder
