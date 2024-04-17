@@ -16,7 +16,8 @@ const videoUrl = (url) => {
   )}/0.jpg?mode=opaque&amp;rel=0&amp;autohide=1&amp;showinfo=0&amp;wmode=transparent`;
 };
 
-const videoBaseUrl = `http://128.199.87.251:6050/upload`;
+const videoBaseUrl = `https://exiummups.com/upload`;
+// const videoBaseUrl = `http://128.199.87.251:6050/upload`;
 
 const Records = () => {
   const [data, setData] = useState([]);
