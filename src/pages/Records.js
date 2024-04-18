@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { Space, Table, Tag, Card, Spin } from "antd";
+import { Table, Card, Spin, Select } from "antd";
 import ReactPlayer from "react-player";
 import axios from "axios";
+
+// const baseUrl = `http://localhost:6050`;
 
 function getYoutubeVideoID(url) {
   const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
@@ -19,21 +21,50 @@ const videoUrl = (url) => {
 const videoBaseUrl = `https://exiummups.com/upload`;
 // const videoBaseUrl = `http://128.199.87.251:6050/upload`;
 
+const { Option } = Select;
+
 const Records = () => {
   const [data, setData] = useState([]);
+  const [zones, setZones] = useState([]);
   const [loading, setLoading] = useState(false);
+
+  const [selectedZone, setSelectedZone] = useState(null);
 
   useEffect(() => {
     // Function to fetch data
     const fetchData = async () => {
       setLoading(true);
       try {
-        // Make a GET request using Axios
-        const { data } = await axios.get("/api/all_video");
-        // Update state with the fetched data
-        // console.log("Response is : ", data);
+
+        let url = `/api/all_video`
+
+        if (selectedZone) {
+          url = url + `?zm_code=${selectedZone}`;
+        }
+
+        const { data } = await axios.get(url);
+
         setData(data?.results);
         setLoading(false);
+      } catch (error) {
+        // Handle errors here
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    // Call the fetch data function
+    fetchData();
+  }, [selectedZone]);
+  useEffect(() => {
+    // Function to fetch data
+    const fetchData = async () => {
+      try {
+        let url = `/api/zones`;
+
+        const { data } = await axios.get(url);
+
+        setZones(data?.results);
+        // setLoading(false);
       } catch (error) {
         // Handle errors here
         console.error("Error fetching data:", error);
@@ -47,32 +78,38 @@ const Records = () => {
   const columns = [
     {
       title: "SAP MIO Code",
-      dataIndex: "SAPMIOCode",
-      key: "SAPMIOCode",
+      dataIndex: "sap_user_code",
+      key: "sap_user_code",
       render: (text) => <a>{text}</a>,
     },
     {
       title: "Work Area",
-      dataIndex: "SAPAreaCode",
-      key: "SAPAreaCode",
+      dataIndex: "work_area_t",
+      key: "work_area_t",
+      render: (text) => <a>{text}</a>,
+    },
+    {
+      title: "Zone",
+      dataIndex: "zm_address",
+      key: "zm_address",
       render: (text) => <a>{text}</a>,
     },
     {
       title: "Name",
-      dataIndex: "MIOName",
-      key: "MIOName",
+      dataIndex: "name",
+      key: "name",
       render: (text) => <a>{text}</a>,
     },
     {
       title: "Mobile Number",
-      dataIndex: "Phone",
-      key: "Phone",
+      dataIndex: "mobile_number",
+      key: "mobile_number",
       render: (text) => <a>{text}</a>,
     },
     {
       title: "Address",
-      dataIndex: "MIOAddress",
-      key: "MIOAddress",
+      dataIndex: "address",
+      key: "address",
       render: (text) => <a>{text}</a>,
     },
 
@@ -120,14 +157,44 @@ const Records = () => {
     },
   ];
 
-  console.log("DAta is : ", data);
+  // console.log("DAta is : ", data);
+  // console.log("zones is : ", zones);
 
   return (
     <div style={{ padding: "0rem 1rem" }}>
       <Card style={{ marginTop: "1rem" }}>
-        <h3 style={{ textAlign: "left", fontWeight: "700", color: "#1F845A" }}>
-          Records :{" "}
-        </h3>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            marginBottom:".5rem"
+          }}
+        >
+          <h3
+            style={{ textAlign: "left", fontWeight: "700", color: "#1F845A" }}
+          >
+            Records :{" "}
+          </h3>
+          <div>
+            <Select
+              onSelect={(value) => setSelectedZone(value)}
+              size="large"
+              style={{ minWidth: 200 }}
+              defaultValue={null}
+              placeholder="Zone"
+            >
+              {/* <Option value={null}>All</Option> */}
+              {zones?.map((zone, index) => {
+                return (
+                  <Option value={zone?.zm_code} key={index}>
+                    {zone?.zm_address}
+                  </Option>
+                );
+              })}
+            </Select>
+          </div>
+        </div>
         {loading ? (
           <Spin size="large" />
         ) : (
