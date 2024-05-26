@@ -27,7 +27,7 @@ const NextPage =() =>{
     const currentUser = JSON.parse(localStorage.getItem("currentUser"));
 
     if(videoBlobDetails !== null){
-        CallApi.uploadVideo(videoBlobDetails,currentUser[0].SAPMIOCode).then((result) => {
+        CallApi.uploadVideo(videoBlobDetails,currentUser[0]).then((result) => {
                 if(result.success){
                     // console.log("Fetch List",result.result);
                     setLoading(false);
