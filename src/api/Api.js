@@ -8,6 +8,7 @@ function uploadVideo(videoBlob, currentUser) {
   formData.append("work_area_t", currentUser.work_area_t);
   formData.append("rm_code", currentUser.rm_code);
   formData.append("zm_code", currentUser.zm_code);
+  formData.append("sm_code", currentUser.sm_code);
   formData.append("gm_code", currentUser.gm_code);
 
   const requestOptions = {
