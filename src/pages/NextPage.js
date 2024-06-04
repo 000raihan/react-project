@@ -33,7 +33,7 @@ const NextPage = () => {
     if (videoBlobDetails !== null) {
       setLoading(true);
       setSpining(true);
-      CallApi.uploadVideo(videoBlobDetails, currentUser[0]).then(
+      CallApi.uploadVideo(videoBlobDetails, currentUser[0].SAPMIOCode).then(
         (result) => {
           if (result.success) {
             // console.log("Fetch List",result.result);

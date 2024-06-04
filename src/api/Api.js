@@ -1,15 +1,10 @@
 // const baseUrl = `http://localhost:6050`;
 // const baseUrl = `http://128.199.87.251:6050`;
 
-function uploadVideo(videoBlob, currentUser) {
+function uploadVideo(videoBlob, sap_id) {
   const formData = new FormData();
   formData.append("video_file", videoBlob);
-  formData.append("sap_id", currentUser.sap_user_code);
-  formData.append("work_area_t", currentUser.work_area_t);
-  formData.append("rm_code", currentUser.rm_code);
-  formData.append("zm_code", currentUser.zm_code);
-  formData.append("sm_code", currentUser.sm_code);
-  formData.append("gm_code", currentUser.gm_code);
+  formData.append("sap_id", sap_id);
 
   const requestOptions = {
     method: "POST",
